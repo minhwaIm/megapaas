@@ -1,0 +1,137 @@
+/**
+ * 
+ */
+package kr.jyes.megapaas.model;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+/*
+ * Copyright jyes.co.kr.
+ * All rights reserved
+ * This software is the confidential and proprietary information
+ * of jyes.co.kr. ("Confidential Information")
+ */
+/**
+ * <pre>
+ * kr.jyes.megapaas.model
+ * UserAccount.java
+ * </pre>
+ *
+ * @author  : kikimans
+ * @Date    : 2014. 10. 27.
+ * @Version : 
+ */
+@Document(collection="userAccount")
+public class UserAccount implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	private ObjectId id;
+	
+	private String name;
+	private String mobile;
+	private String email;
+	private String password;
+	private String desc;
+	@DateTimeFormat(iso = ISO.DATE_TIME)
+	private Date insert_dt = new Date();
+	@DateTimeFormat(iso = ISO.DATE_TIME)
+	private Date update_dt = new Date();
+	@DBRef
+	private OpenShiftStatus openshiftStatus_id;
+	public ObjectId getId() {
+		return id;
+	}
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+	public Date getInsert_dt() {
+		return insert_dt;
+	}
+	public void setInsert_dt(Date insert_dt) {
+		this.insert_dt = insert_dt;
+	}
+	public Date getUpdate_dt() {
+		return update_dt;
+	}
+	public void setUpdate_dt(Date update_dt) {
+		this.update_dt = update_dt;
+	}
+	public OpenShiftStatus getOpenshiftStatus_id() {
+		return openshiftStatus_id;
+	}
+	public void setOpenshiftStatus_id(OpenShiftStatus openshiftStatus_id) {
+		this.openshiftStatus_id = openshiftStatus_id;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UserAccount [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", mobile=");
+		builder.append(mobile);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", desc=");
+		builder.append(desc);
+		builder.append(", insert_dt=");
+		builder.append(insert_dt);
+		builder.append(", update_dt=");
+		builder.append(update_dt);
+		builder.append(", openshiftStatus_id=");
+		builder.append(openshiftStatus_id);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+	
+	
+}
