@@ -29,15 +29,14 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
  * @Version : 
  */
 @Document(collection="code")
-public class CommonCode implements Serializable {
+public class CommonCode extends AbstractObject implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	private ObjectId id;
+	
 	private int code;
 	private String value;
 	private String name;
@@ -78,14 +77,7 @@ public class CommonCode implements Serializable {
 		this.desc = desc;
 		this.register = register;
 	}
-
-
-	public ObjectId getId() {
-		return id;
-	}
-	public void setId(ObjectId id) {
-		this.id = id;
-	}
+	
 	public int getCode() {
 		return code;
 	}
@@ -138,12 +130,12 @@ public class CommonCode implements Serializable {
 	public void setValue(String value) {
 		this.value = value;
 	}
+
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("CommonCode [id=");
-		builder.append(id);
-		builder.append(", code=");
+		builder.append("CommonCode [code=");
 		builder.append(code);
 		builder.append(", value=");
 		builder.append(value);
@@ -162,6 +154,8 @@ public class CommonCode implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	
 	
 	
 	

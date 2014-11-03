@@ -31,7 +31,11 @@
 	
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 	  <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
-	</bean>
+	</bean>	
+	
+	<mongo:repositories base-package="kr.jyes.megapaas.repository" repository-impl-postfix="CustomImpl"/>
+
+	
 	
 
 </beans>

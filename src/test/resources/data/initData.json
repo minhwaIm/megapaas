@@ -1,0 +1,74 @@
+[
+	{
+		"code":"1001",
+		"value":"1",
+		"name" :"status_cd",
+		"desc" : "사용자 신청 상태",
+		"useYn" : "Y",
+		"register" : "admin"
+	},
+	{
+		"code" : "1002",
+		"value" : "2",
+		"name" : "status_cd",
+		"desc" : "사용자 승인 상태",
+		"useYn" : "Y",
+		"register" : "admin"
+	},
+	{
+		"code" : "2001",
+		"value" : "small",
+		"name" : "geartype_cd",
+		"desc" : "사용자 기어 타입",
+		"useYn" : "Y",
+		"register" : "admin"
+	},
+	{
+		"code" : "2002",
+		"value" : "medium",
+		"name" : "geartype_cd",
+		"desc" : "사용자 기어 타입",
+		"useYn" : "Y",
+		"register" : "admin"
+	},
+	{
+		"code" : "4001",
+		"value" : "FAQ",
+		"name" : "board_cd",
+		"desc" : "게시판 종류",
+		"useYn" : "Y",
+		"register" : "admin"
+	},
+	{
+		"code" : "4002",
+		"value" : "Q&A",
+		"name" : "board_cd",
+		"desc" : "게시판 종류",
+		"useYn" : "Y",
+		"register" : "admin"
+	},
+	{
+		"code" : "5001",
+		"value" : "1",
+		"name" : "level_cd",
+		"desc" : "관리자 권한 최고 관리자",
+		"useYn" : "Y",
+		"register" : "admin"
+	},
+	{
+		"code" : "5002",
+		"value" : "2",
+		"name" : "level_cd",
+		"desc" : "관리자 권한 게시판 관리자",
+		"useYn" : "Y",
+		"register" : "admin"
+	},
+	{
+		"code" : "5003",
+		"value" : "3",
+		"name" : "level_cd",
+		"desc" : "관리자 권한 사용자 관리자",
+		"useYn" : "Y",
+		"register" : "admin"
+	}
+]

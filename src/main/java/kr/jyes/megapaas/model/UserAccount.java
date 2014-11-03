@@ -46,11 +46,18 @@ public class UserAccount implements Serializable {
 	private String password;
 	private String desc;
 	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private Date insert_dt = new Date();
+	private Date insert_dt;
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private Date update_dt = new Date();
-	@DBRef
-	private OpenShiftStatus openshiftStatus_id;
+	
+	private OpenShiftStatus status;	
+	
+	private ObjectId openshiftStatus_id;
+	
+	public UserAccount(){
+		this.insert_dt = new Date();
+	}
+	
 	public ObjectId getId() {
 		return id;
 	}
@@ -98,14 +105,24 @@ public class UserAccount implements Serializable {
 	}
 	public void setUpdate_dt(Date update_dt) {
 		this.update_dt = update_dt;
-	}
-	public OpenShiftStatus getOpenshiftStatus_id() {
+	}	
+	
+	public ObjectId getOpenshiftStatus_id() {
 		return openshiftStatus_id;
 	}
-	public void setOpenshiftStatus_id(OpenShiftStatus openshiftStatus_id) {
+	public void setOpenshiftStatus_id(ObjectId openshiftStatus_id) {
 		this.openshiftStatus_id = openshiftStatus_id;
 	}
 	
+	public OpenShiftStatus getStatus() {		
+		
+		return status;
+	}
+	
+	
+	public void setStatus(OpenShiftStatus status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -125,11 +142,15 @@ public class UserAccount implements Serializable {
 		builder.append(insert_dt);
 		builder.append(", update_dt=");
 		builder.append(update_dt);
+		builder.append(", status=");
+		builder.append(status);
 		builder.append(", openshiftStatus_id=");
 		builder.append(openshiftStatus_id);
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	
 	
 	
 	

@@ -30,32 +30,45 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
  * @Version : 
  */
 @Document(collection="openshiftStatus")
-public class OpenShiftStatus implements Serializable{
+public class OpenShiftStatus extends AbstractObject implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	private ObjectId id;
+	
 	
 	@DBRef
 	private CommonCode status_cd;
+	
 	@DBRef
 	private CommonCode geartype_cd;
-	private int consumed_gear;
-	private String desc;
+	
+	private int consumed_gear = 0;
+	private String desc = "사용자 상태";
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private Date insert_dt;
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private Date update_dt = new Date();
-	public ObjectId getId() {
-		return id;
+	
+	public OpenShiftStatus(){
+		this(new Date());
 	}
-	public void setId(ObjectId id) {
-		this.id = id;
+	
+	public OpenShiftStatus(Date date) {
+		// TODO Auto-generated constructor stub
+		this.insert_dt = date;
+	}	
+
+	public OpenShiftStatus(CommonCode status, CommonCode gearType) {
+		// TODO Auto-generated constructor stub
+		this.status_cd = status;
+		this.geartype_cd = gearType;		
+		this.insert_dt = new Date();		
 	}
+
+	
 	public CommonCode getStatus_cd() {
 		return status_cd;
 	}
@@ -92,12 +105,11 @@ public class OpenShiftStatus implements Serializable{
 	public void setUpdate_dt(Date update_dt) {
 		this.update_dt = update_dt;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("OpenShiftStatus [id=");
-		builder.append(id);
-		builder.append(", status_cd=");
+		builder.append("OpenShiftStatus [status_cd=");
 		builder.append(status_cd);
 		builder.append(", geartype_cd=");
 		builder.append(geartype_cd);
@@ -112,6 +124,8 @@ public class OpenShiftStatus implements Serializable{
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	
 	
 	
 	
