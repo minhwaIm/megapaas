@@ -30,23 +30,20 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
  * @Version : 
  */
 @Document(collection="openshiftStatus")
-public class OpenShiftStatus extends AbstractObject implements Serializable{
+public class OpenShiftStatus extends AbstractMegaObject implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	
+	private static final long serialVersionUID = 1L;	
 	
 	@DBRef
-	private CommonCode status_cd;
-	
+	private CommonCode status_cd;	
 	@DBRef
-	private CommonCode geartype_cd;
-	
+	private CommonCode geartype_cd;	
 	private int consumed_gear = 0;
 	private String desc = "사용자 상태";
+	private ObjectId owner_id;
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private Date insert_dt;
 	@DateTimeFormat(iso = ISO.DATE_TIME)
@@ -58,13 +55,24 @@ public class OpenShiftStatus extends AbstractObject implements Serializable{
 	
 	public OpenShiftStatus(Date date) {
 		// TODO Auto-generated constructor stub
+		super(new ObjectId());
 		this.insert_dt = date;
 	}	
 
 	public OpenShiftStatus(CommonCode status, CommonCode gearType) {
 		// TODO Auto-generated constructor stub
+		super(new ObjectId());
 		this.status_cd = status;
 		this.geartype_cd = gearType;		
+		this.insert_dt = new Date();		
+	}
+	
+	public OpenShiftStatus(CommonCode status, CommonCode gearType, ObjectId objId) {
+		// TODO Auto-generated constructor stub
+		super(new ObjectId());
+		this.status_cd = status;
+		this.geartype_cd = gearType;
+		this.owner_id = objId;
 		this.insert_dt = new Date();		
 	}
 
@@ -106,6 +114,14 @@ public class OpenShiftStatus extends AbstractObject implements Serializable{
 		this.update_dt = update_dt;
 	}
 
+	public ObjectId getOwner_id() {
+		return owner_id;
+	}
+
+	public void setOwner_id(ObjectId owner_id) {
+		this.owner_id = owner_id;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -117,6 +133,8 @@ public class OpenShiftStatus extends AbstractObject implements Serializable{
 		builder.append(consumed_gear);
 		builder.append(", desc=");
 		builder.append(desc);
+		builder.append(", owner_id=");
+		builder.append(owner_id);
 		builder.append(", insert_dt=");
 		builder.append(insert_dt);
 		builder.append(", update_dt=");
@@ -124,6 +142,7 @@ public class OpenShiftStatus extends AbstractObject implements Serializable{
 		builder.append("]");
 		return builder.toString();
 	}
+
 	
 	
 	

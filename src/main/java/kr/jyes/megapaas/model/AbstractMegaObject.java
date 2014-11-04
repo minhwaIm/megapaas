@@ -23,7 +23,7 @@ import org.springframework.data.annotation.Id;
  * @Date    : 2014. 11. 3.
  * @Version : 
  */
-public class AbstractObject implements Serializable{
+public class AbstractMegaObject implements Serializable{
 
 	/**
 	 * 
@@ -31,6 +31,11 @@ public class AbstractObject implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id private ObjectId id;
+
+	public AbstractMegaObject(ObjectId objectId) {
+		// TODO Auto-generated constructor stub
+		this.id = objectId;
+	}
 
 	public ObjectId getId() {
 		return id;

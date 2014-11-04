@@ -6,6 +6,8 @@ package kr.jyes.megapaas.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import kr.jyes.megapaas.mongo.CascadeSave;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -30,15 +32,12 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
  * @Version : 
  */
 @Document(collection="userAccount")
-public class UserAccount implements Serializable {
+public class UserAccount extends AbstractMegaObject implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	private ObjectId id;
 	
 	private String name;
 	private String mobile;
@@ -50,20 +49,17 @@ public class UserAccount implements Serializable {
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private Date update_dt = new Date();
 	
+	@DBRef(lazy = true)
+	@CascadeSave 
 	private OpenShiftStatus status;	
 	
 	private ObjectId openshiftStatus_id;
 	
 	public UserAccount(){
+		super(new ObjectId());
 		this.insert_dt = new Date();
-	}
+	}	
 	
-	public ObjectId getId() {
-		return id;
-	}
-	public void setId(ObjectId id) {
-		this.id = id;
-	}
 	public String getName() {
 		return name;
 	}
@@ -123,12 +119,11 @@ public class UserAccount implements Serializable {
 	public void setStatus(OpenShiftStatus status) {
 		this.status = status;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("UserAccount [id=");
-		builder.append(id);
-		builder.append(", name=");
+		builder.append("UserAccount [name=");
 		builder.append(name);
 		builder.append(", mobile=");
 		builder.append(mobile);
@@ -149,7 +144,7 @@ public class UserAccount implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 	
 	
 	

@@ -9,6 +9,8 @@ import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import kr.jyes.megapaas.model.CommonCode;
 import kr.jyes.megapaas.model.OpenShiftStatus;
@@ -121,6 +123,13 @@ public class OpenShiftStatusRepositoryCustomImpl implements OpenShiftStatusRepos
 			return false;
 		}	
 		
+	}
+
+	@Override
+	public OpenShiftStatus findByOwnerId(ObjectId id) {
+		// TODO Auto-generated method stub
+		Query query = new Query().addCriteria(Criteria.where("owner_id").is(id));
+		return mongoTemplate.findOne(query, OpenShiftStatus.class);
 	}
 
 }

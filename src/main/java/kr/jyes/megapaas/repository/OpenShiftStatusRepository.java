@@ -16,4 +16,5 @@ public interface OpenShiftStatusRepository extends MongoRepository<OpenShiftStat
 
 	
 	
+	
 }

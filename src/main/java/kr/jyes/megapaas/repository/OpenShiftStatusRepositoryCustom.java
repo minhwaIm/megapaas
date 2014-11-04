@@ -3,6 +3,7 @@ package kr.jyes.megapaas.repository;
 import kr.jyes.megapaas.model.OpenShiftStatus;
 import kr.jyes.megapass.exception.MegaPaasMongoRepositoryException;
 
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Repository;
 
 /*
@@ -83,4 +84,26 @@ public interface OpenShiftStatusRepositoryCustom {
 	 * @throws MegaPaasMongoRepositoryException
 	 */
 	OpenShiftStatus updateUserConsumedGear(OpenShiftStatus status, int consumed_gear_cnt) throws MegaPaasMongoRepositoryException;
+	
+	/**
+	 * <pre>
+	 * 1. 개요 : 상태의 owner_id 조회
+	 * 2. 처리내용 : 상태의 owner_id를 가지고 대상 데이터 조회
+	 * </pre>
+	 *
+	 * @Method : findByOwnerId
+	 * @Return : OpenShiftStatus
+	 * @date   : 2014. 11. 4.
+	 * @author : kikimans
+	 * @history : 
+	 * ------------------------------------------------------------------------------------------
+	 *   변경일			작성자					변경내용			
+	 * -----------	-----------------	---------------------------------------------------------
+	 *	 2014. 11. 4.		kikimans					최초작성
+	 * ------------------------------------------------------------------------------------------
+	 *
+	 * @param id
+	 * @return
+	 */
+	OpenShiftStatus findByOwnerId(ObjectId id);
 }

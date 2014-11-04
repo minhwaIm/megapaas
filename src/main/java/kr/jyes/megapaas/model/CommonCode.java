@@ -29,7 +29,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
  * @Version : 
  */
 @Document(collection="code")
-public class CommonCode extends AbstractObject implements Serializable {
+public class CommonCode extends AbstractMegaObject implements Serializable {
 
 	/**
 	 * 
@@ -55,6 +55,7 @@ public class CommonCode extends AbstractObject implements Serializable {
 
 	public CommonCode(Date date) {
 		// TODO Auto-generated constructor stub
+		super(new ObjectId());
 		this.insert_dt = date;
 	}
 	
@@ -70,7 +71,7 @@ public class CommonCode extends AbstractObject implements Serializable {
 	 */
 	public CommonCode(int code, String value, String name, String desc,
 			String register) {
-		super();
+		super(new ObjectId());
 		this.code = code;
 		this.value = value;
 		this.name = name;
